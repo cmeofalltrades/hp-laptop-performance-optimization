@@ -49,7 +49,7 @@ Reviewed startup applications and disabled non-essential entries.
 
 ### Memory Analysis
 
-👉 ![Memory Before](./screenshots/03-Memory-Utilization.png)
+👉 [Memory Before](./screenshots/03-Memory-Utilization.png)
 
 Findings:
 
@@ -65,11 +65,11 @@ Root cause identified as insufficient memory.
 
 Before Cleanup:
 
-👉 ![Storage Before](./screenshots/06-Storage-Before-Cleanup.png)
+👉 [Storage Before](./screenshots/06-Storage-Before-Cleanup.png)
 
 After Cleanup:
 
-👉 ![Storage After](./screenshots/09-Storage-After-Cleanup.png)
+👉 [Storage After](./screenshots/09-Storage-After-Cleanup.png)
 
 Storage improved from:
 
@@ -80,9 +80,9 @@ Storage improved from:
 
 ### Hardware Verification
 
-👉 ![PowerShell Model](./screenshots/07-System-Model.png)
+👉 [PowerShell Model](./screenshots/07-System-Model.png)
 
-👉 ![PowerShell Memory](./screenshots/08-RAM-Information.png)
+👉 [PowerShell Memory](./screenshots/08-RAM-Information.png)
 
 Verified:
 
