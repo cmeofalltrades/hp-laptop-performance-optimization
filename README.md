@@ -1,128 +1,304 @@
-# HP Laptop Performance Optimization
+# HP Laptop Performance Optimization & Root Cause Analysis
 
-## Overview
+**Project Type:** Endpoint Troubleshooting & Performance Optimization
 
-This project documents the troubleshooting and optimization of a Windows 11 HP laptop experiencing severe performance issues.
+**Completed By:** Cierra Emerson | BrickStack Network Solutions
 
-The engagement included:
-
-- Diagnostics
-- Startup optimization
-- Storage cleanup
-- Resource analysis
-- Root cause identification
-- Hardware upgrade recommendation
+**Date:** June 2026
 
 ---
 
-## Customer Complaint
+# Executive Summary
+
+A customer contacted BrickStack Network Solutions regarding an HP laptop experiencing severe performance issues during normal use. The customer reported slow application launches, sluggish system responsiveness, and an overall poor user experience.
+
+A structured diagnostic process was performed to identify the root cause, optimize system performance, and provide recommendations for long-term improvement.
+
+---
+
+# Customer Complaint
 
 The customer reported:
 
-- Slow performance
-- Delayed application launches
-- General system sluggishness
+* Extremely slow system performance
+* Delayed application launches
+* General system sluggishness
+* Poor multitasking performance
 
 ---
 
-## Environment
+# Device Information
 
-| Component | Details |
-|------------|------------|
-| Model | HP Laptop 14-dq3xxx |
-| OS | Windows 11 Home |
-| CPU | Intel Celeron N4500 |
-| RAM | 4GB DDR4 |
-| Storage | 64GB SSD/eMMC |
-
----
-
-## Diagnostics
-
-### Startup Applications
-
-👉 [Startup Apps](./screenshots/02-Startup-Applications.png)
-
-Reviewed startup applications and disabled non-essential entries.
+| Component        | Details                        |
+| ---------------- | ------------------------------ |
+| Manufacturer     | HP                             |
+| Model            | HP Laptop 14-dq3xxx            |
+| Operating System | Windows 11 Home 25H2           |
+| Processor        | Intel Celeron N4500 @ 1.10 GHz |
+| Installed Memory | 4GB DDR4-3200 Samsung          |
+| Storage          | 64GB SSD/eMMC                  |
+| Architecture     | 64-bit Operating System        |
 
 ---
 
-### Memory Analysis
+# Diagnostic Methodology
 
-👉 [Memory Before](./screenshots/03-Memory-Utilization.png)
+A systematic troubleshooting approach was used to identify the source of the performance issues.
 
-Findings:
+## Step 1: Startup Application Review
 
-- 4GB RAM
-- 92% utilization
-- Less than 400MB available
+Reviewed startup applications through Task Manager to identify unnecessary programs launching during system startup.
 
-Root cause identified as insufficient memory.
+### Actions Performed
 
----
+Disabled or reviewed:
 
-### Storage Analysis
+* HP System Tray
+* HP Launcher Components
+* Microsoft Edge Startup Processes
+* Mobile Device Integrations
+* Additional non-essential startup applications
 
-Before Cleanup:
+### Outcome
 
-👉 [Storage Before](./screenshots/06-Storage-Before-Cleanup.png)
-
-After Cleanup:
-
-👉 [Storage After](./screenshots/09-Storage-After-Cleanup.png)
-
-Storage improved from:
-
-- 7.84GB free
-- 13GB free
+Reduced unnecessary background processes and startup overhead.
 
 ---
 
-### Hardware Verification
+## Step 2: Resource Utilization Analysis
 
-👉 [PowerShell Model](./screenshots/07-System-Model.png)
+Task Manager was used to evaluate system resource utilization.
 
-👉 [PowerShell Memory](./screenshots/08-RAM-Information.png)
+### Initial Findings
 
-Verified:
+| Resource | Utilization |
+| -------- | ----------- |
+| CPU      | 8%          |
+| Memory   | 88% - 92%   |
+| Disk     | 4%          |
+| Network  | 0%          |
 
-- HP Laptop 14-dq3xxx
-- Samsung DDR4-3200 Memory
+### Analysis
 
----
+The system showed extremely high memory utilization despite very few applications being open.
 
-## Root Cause
-
-Primary bottleneck:
-
-- 4GB RAM running Windows 11
-
-Secondary bottleneck:
-
-- Low available storage
+This indicated a potential memory bottleneck.
 
 ---
 
-## Recommendation
+## Step 3: Memory Analysis
 
-Upgrade memory from:
+The Memory Performance tab was reviewed to identify memory-related constraints.
 
-- 4GB DDR4
-- to 8GB DDR4
+### Findings
 
-Expected improvements:
+| Metric             | Result |
+| ------------------ | ------ |
+| Installed Memory   | 4GB    |
+| Usable Memory      | 3.7GB  |
+| Memory Utilization | 92%    |
+| Available Memory   | ~358MB |
 
-- Faster responsiveness
-- Better multitasking
-- Reduced memory saturation
+### Analysis
+
+Windows 11 was consuming the majority of available system memory under normal operating conditions.
+
+This was identified as a significant performance limitation.
 
 ---
 
-## Skills Demonstrated
+## Step 4: Storage Analysis
 
-- Windows Administration
-- Endpoint Troubleshooting
-- Root Cause Analysis
-- PowerShell
-- Hardware Diagnostics
-- Performance Optimization
+System storage was evaluated for available free space.
+
+### Initial Findings
+
+| Metric        | Value  |
+| ------------- | ------ |
+| Total Storage | 57.3GB |
+| Free Space    | 7.84GB |
+
+### Analysis
+
+The device had less than 14% available storage remaining.
+
+Low available storage was identified as a secondary performance concern.
+
+---
+
+## Step 5: Installed Application Review
+
+Installed applications were reviewed for potential performance impact.
+
+### Findings
+
+Applications identified during review included:
+
+* McAfee Personal Security
+* HP Support Utilities
+* HP Analytics Components
+* Dropbox Lite
+* Microsoft Teams Components
+* Roblox Studio
+
+### Outcome
+
+Applications contributing to background resource utilization were identified and documented.
+
+---
+
+## Step 6: Hardware Verification
+
+PowerShell was used to verify hardware specifications.
+
+### Commands Used
+
+Get-ComputerInfo
+
+Get-CimInstance Win32_PhysicalMemory
+
+### Results
+
+* HP Laptop 14-dq3xxx
+* Samsung DDR4-3200 Memory Module
+* 4GB Installed Memory
+* Single Memory Module Installed
+
+---
+
+## Step 7: Windows Update Verification
+
+Windows Update status was reviewed.
+
+### Findings
+
+* System fully updated
+* No critical updates pending
+* Optional preview update available
+
+### Outcome
+
+Operating system updates were not determined to be a contributing factor.
+
+---
+
+# Corrective Actions Performed
+
+## Storage Cleanup
+
+Performed Windows Storage cleanup.
+
+### Results
+
+| Metric     | Before | After  |
+| ---------- | ------ | ------ |
+| Free Space | 7.84GB | 13.0GB |
+
+### Storage Recovered
+
+Approximately 5.2GB of storage space recovered.
+
+---
+
+## Startup Optimization
+
+Reviewed and disabled unnecessary startup applications to reduce background resource consumption.
+
+---
+
+## Software Review
+
+Identified software components contributing to system resource usage and documented recommendations for removal or optimization.
+
+---
+
+# Root Cause Analysis
+
+## Primary Cause
+
+### Insufficient System Memory
+
+Evidence:
+
+* Memory utilization consistently exceeded 90%
+* Available memory remained below 400MB
+* No abnormal CPU usage patterns
+* No evidence of storage bottlenecks
+
+Windows 11 was consuming the majority of available memory, leaving insufficient resources for normal user workloads.
+
+---
+
+## Secondary Causes
+
+### Limited Storage Capacity
+
+* Only 7.84GB free prior to cleanup
+* Reduced available space for virtual memory and system operations
+
+### Background Applications
+
+* Vendor utilities
+* Security software
+* Startup applications
+
+These contributed additional resource consumption but were not identified as the primary bottleneck.
+
+---
+
+# Recommendations
+
+## Immediate Recommendation
+
+Upgrade installed memory from:
+
+* 4GB DDR4 → 8GB DDR4
+
+### Expected Benefits
+
+* Improved multitasking performance
+* Reduced memory saturation
+* Faster application launches
+* Improved overall responsiveness
+* Better Windows 11 performance
+
+---
+
+# Project Outcome
+
+### Achievements
+
+* Successfully diagnosed root cause of performance issues
+* Recovered over 5GB of storage space
+* Optimized startup configuration
+* Verified operating system health
+* Documented hardware limitations
+* Developed hardware upgrade plan
+
+### Status
+
+Software optimization completed.
+
+Hardware remediation (RAM upgrade) pending installation of additional Samsung 4GB DDR4-3200 memory module.
+
+---
+
+# Skills Demonstrated
+
+* Windows 11 Administration
+* Endpoint Troubleshooting
+* Root Cause Analysis
+* Resource Utilization Analysis
+* Hardware Diagnostics
+* PowerShell
+* Performance Optimization
+* Startup Management
+* Storage Management
+* Technical Documentation
+* Customer Support
+* Service Reporting
+
+---
+
+**BrickStack Network Solutions**
+"Building Reliable Technology Solutions, One Device at a Time."
