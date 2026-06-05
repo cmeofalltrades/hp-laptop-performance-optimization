@@ -42,7 +42,7 @@ The customer reported:
 ### Startup Applications
 
 ![Startup Apps](./02-Startup-Applications.png)
-👉 [Startup Apps](./02-Startup-Applications.png)
+👉 [Startup Apps](./screenshots/02-Startup-Applications.png)
 
 Reviewed startup applications and disabled non-essential entries.
 
