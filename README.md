@@ -41,7 +41,7 @@ The customer reported:
 
 ### Startup Applications
 
-![Startup Apps](screenshots/startup-apps-review.jpg)
+![Startup Apps](screenshots/02-Startup-Applications.png)
 
 Reviewed startup applications and disabled non-essential entries.
 
