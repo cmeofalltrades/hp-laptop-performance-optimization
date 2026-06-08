@@ -1,3 +1,4 @@
+[Repository Banner](./images/project-banner.png
 # HP Laptop Performance Optimization & Root Cause Analysis
 
 **Project Type:** Endpoint Troubleshooting & Performance Optimization
