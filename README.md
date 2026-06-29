@@ -30,15 +30,18 @@ The customer reported:
 
 # Device Information
 
-| Component        | Details                        |
-| ---------------- | ------------------------------ |
-| Manufacturer     | HP                             |
-| Model            | HP Laptop 14-dq3xxx            |
-| Operating System | Windows 11 Home 25H2           |
-| Processor        | Intel Celeron N4500 @ 1.10 GHz |
-| Installed Memory | 4GB DDR4-3200 Samsung          |
-| Storage          | 64GB SSD/eMMC                  |
-| Architecture     | 64-bit Operating System        |
+# Device Information
+
+| Component | Details |
+|------------|------------------------------|
+| Manufacturer | HP |
+| Model | HP Laptop 14-dq3230nr |
+| Operating System | Windows 11 Home 25H2 |
+| Processor | Intel Celeron N4500 @ 1.10 GHz |
+| Installed Memory (Initial) | 4GB Samsung DDR4-3200 |
+| Installed Memory (Final) | 8GB Samsung DDR4-3200 |
+| Storage | 64GB eMMC SSD |
+| Architecture | 64-bit Operating System |
 
 ---
 
@@ -183,6 +186,45 @@ Operating system updates were not determined to be a contributing factor.
 
 ---
 
+## Step 8: Hardware Upgrade & Validation
+
+Following completion of software optimization, the primary hardware limitation was addressed by replacing the original 4GB Samsung DDR4-3200 memory module with an 8GB Samsung DDR4-3200 module.
+
+### Installation
+
+The laptop was safely disassembled following ESD best practices.
+
+Actions performed included:
+
+* Removed original 4GB memory module
+* Installed 8GB Samsung DDR4-3200 SODIMM
+* Verified proper seating and retention clip engagement
+* Reassembled the system
+* Successfully completed POST
+* Booted into Windows 11 without errors
+
+### Hardware Validation
+
+PowerShell was used to verify hardware recognition.
+
+#### Commands
+
+Get-CimInstance Win32_PhysicalMemory
+
+Get-ComputerInfo | Select-Object CsTotalPhysicalMemory
+
+### Results
+
+| Metric | Result |
+|---------|--------|
+| Manufacturer | Samsung |
+| Installed Memory | 8GB |
+| Speed | 3200 MT/s |
+| Memory Detected | Successfully |
+
+Windows Task Manager confirmed the upgraded memory capacity and normal system operation.
+---
+
 # Corrective Actions Performed
 
 ## Storage Cleanup
@@ -213,6 +255,23 @@ Identified software components contributing to system resource usage and documen
 
 ---
 
+## Memory Upgrade
+
+The original 4GB memory module was replaced with an 8GB Samsung DDR4-3200 SODIMM.
+
+### Results
+
+| Metric | Before | After |
+|---------|--------|-------|
+| Installed Memory | 4GB | 8GB |
+| Usable Memory | 3.7GB | 7.7GB |
+| Memory Utilization | 88–92% | 47% |
+| Available Memory | ~358MB | ~3.9GB |
+
+The upgrade eliminated the system memory bottleneck identified during the investigation.
+
+---
+
 # Root Cause Analysis
 
 ## Primary Cause
@@ -228,6 +287,13 @@ Evidence:
 
 Windows 11 was consuming the majority of available memory, leaving insufficient resources for normal user workloads.
 
+### Conclusion
+
+The investigation determined that insufficient physical memory was the primary cause of the customer's performance issues.
+
+Following installation of an 8GB Samsung DDR4-3200 memory module, memory utilization decreased from approximately **90% to 47%**, while available physical memory increased from approximately **358MB to 3.9GB**.
+
+Post-upgrade validation using PowerShell and Windows Task Manager confirmed that the hardware upgrade successfully eliminated the primary memory bottleneck and significantly improved overall system responsiveness.
 ---
 
 ## Secondary Causes
@@ -247,21 +313,35 @@ These contributed additional resource consumption but were not identified as the
 
 ---
 
-# Recommendations
+# Resolution
 
-## Immediate Recommendation
+The recommended hardware upgrade was successfully completed following the diagnostic investigation.
 
-Upgrade installed memory from:
+The original 4GB Samsung DDR4-3200 memory module was replaced with an 8GB Samsung DDR4-3200 SODIMM.
 
-* 4GB DDR4 → 8GB DDR4
+Post-upgrade validation confirmed:
 
-### Expected Benefits
+* Successful detection of the new memory module using PowerShell
+* Stable Windows 11 operation following installation
+* Memory utilization reduced from approximately **90% to 47%**
+* Available memory increased from approximately **358MB to 3.9GB**
+* Improved multitasking performance and overall system responsiveness
+* No hardware or operating system issues detected after installation
 
-* Improved multitasking performance
-* Reduced memory saturation
-* Faster application launches
-* Improved overall responsiveness
-* Better Windows 11 performance
+The hardware upgrade successfully resolved the primary performance bottleneck identified during the investigation.
+
+---
+
+# Performance Comparison
+
+| Metric | Before | After |
+|---------|--------|-------|
+| Installed Memory | 4GB | 8GB |
+| Usable Memory | 3.7GB | 7.7GB |
+| Memory Utilization | 88–92% | 47% |
+| Available Memory | ~358MB | ~3.9GB |
+| Free Storage | 7.84GB | 13.0GB |
+| Overall Responsiveness | Poor | Significantly Improved |
 
 ---
 
@@ -269,18 +349,20 @@ Upgrade installed memory from:
 
 ### Achievements
 
-* Successfully diagnosed root cause of performance issues
-* Recovered over 5GB of storage space
-* Optimized startup configuration
-* Verified operating system health
-* Documented hardware limitations
-* Developed hardware upgrade plan
+* Successfully identified the root cause of poor system performance
+* Recovered approximately 5GB of storage space
+* Optimized Windows startup configuration
+* Verified operating system integrity
+* Upgraded system memory from 4GB to 8GB
+* Validated hardware installation using PowerShell
+* Confirmed improved system performance through Task Manager analysis
+* Restored the laptop to normal operating condition
 
-### Status
+### Final Status
 
-Software optimization completed.
+Project successfully completed.
 
-Hardware remediation (RAM upgrade) pending installation of additional Samsung 4GB DDR4-3200 memory module.
+The customer's laptop is operating normally with 8GB of DDR4 memory installed, significantly reducing memory saturation and improving overall system responsiveness.
 
 ---
 
@@ -289,15 +371,27 @@ Hardware remediation (RAM upgrade) pending installation of additional Samsung 4G
 * Windows 11 Administration
 * Endpoint Troubleshooting
 * Root Cause Analysis
-* Resource Utilization Analysis
-* Hardware Diagnostics
-* PowerShell
 * Performance Optimization
-* Startup Management
+* Hardware Diagnostics
+* Laptop Hardware Repair
+* RAM Installation & Validation
+* PowerShell Hardware Inventory
+* Resource Utilization Analysis
+* Startup Optimization
 * Storage Management
-* Technical Documentation
+* Windows Performance Tuning
 * Customer Support
-* Service Reporting
+* Technical Documentation
+* Hardware Upgrade Planning
+* Post-Repair Validation
+
+---
+
+# Lessons Learned
+
+This project reinforced the importance of evidence-based troubleshooting. Rather than immediately replacing hardware, a structured diagnostic process identified memory as the primary bottleneck. Software optimizations improved the system, but objective performance data demonstrated that a RAM upgrade was necessary to fully resolve the customer's issue.
+
+Using Task Manager, PowerShell, and Windows performance metrics before and after the upgrade provided measurable evidence that the hardware remediation successfully addressed the root cause.
 
 ---
 
