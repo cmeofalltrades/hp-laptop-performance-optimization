@@ -30,8 +30,6 @@ The customer reported:
 
 # Device Information
 
-# Device Information
-
 | Component | Details |
 |------------|------------------------------|
 | Manufacturer | HP |
@@ -223,6 +221,7 @@ Get-ComputerInfo | Select-Object CsTotalPhysicalMemory
 | Memory Detected | Successfully |
 
 Windows Task Manager confirmed the upgraded memory capacity and normal system operation.
+
 ---
 
 # Corrective Actions Performed
@@ -291,9 +290,11 @@ Windows 11 was consuming the majority of available memory, leaving insufficient 
 
 The investigation determined that insufficient physical memory was the primary cause of the customer's performance issues.
 
+
 Following installation of an 8GB Samsung DDR4-3200 memory module, memory utilization decreased from approximately **90% to 47%**, while available physical memory increased from approximately **358MB to 3.9GB**.
 
-Post-upgrade validation using PowerShell and Windows Task Manager confirmed that the hardware upgrade successfully eliminated the primary memory bottleneck and significantly improved overall system responsiveness.
+Post upgrade validation using PowerShell and Windows Task Manager confirmed that the hardware upgrade successfully eliminated the primary memory bottleneck and signficantly improved overall system responsiveness.
+
 ---
 
 ## Secondary Causes
@@ -392,8 +393,3 @@ The customer's laptop is operating normally with 8GB of DDR4 memory installed, s
 This project reinforced the importance of evidence-based troubleshooting. Rather than immediately replacing hardware, a structured diagnostic process identified memory as the primary bottleneck. Software optimizations improved the system, but objective performance data demonstrated that a RAM upgrade was necessary to fully resolve the customer's issue.
 
 Using Task Manager, PowerShell, and Windows performance metrics before and after the upgrade provided measurable evidence that the hardware remediation successfully addressed the root cause.
-
----
-
-**BrickStack Network Solutions**
-"Building Reliable Technology Solutions, One Device at a Time."
